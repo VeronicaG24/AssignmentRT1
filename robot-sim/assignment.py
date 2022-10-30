@@ -7,4 +7,6 @@ R = Robot()
 
 
 while 1:
-    pass
+	print("prova")
+	pass
+	
