@@ -1,6 +1,8 @@
 Assignment 1
 ================================
 
+This is a possible implementation of the first assignment of Research Track 1 course.
+
 How to run
 ----------------------
 
