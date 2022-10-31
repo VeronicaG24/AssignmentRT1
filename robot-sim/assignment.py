@@ -104,8 +104,6 @@ def main():
 
                 if find_token(num_color_box)[0] == -1 or find_token(num_color_box)[1] == -1:
                     turn(10, 1)
-                    #print("Codes of the silver box already paired: " + str(list_token_silver))
-                    #print("Codes of the golden box already paired: " + str(list_token_gold))
                     print("Searching util timer ends... " + str(timer_to_end))
                     timer_to_end -= 1
                 elif find_token(num_color_box)[0] < d_th:
@@ -140,8 +138,6 @@ def main():
 
                 if find_token(num_color_box)[0] == -1 or find_token(num_color_box)[1] == -1:
                     turn(10, 1)
-                    #print("Codes of the silver box already paired: " + str(list_token_silver))
-                    #print("Codes of the golden box already paired: " + str(list_token_gold))
                     print("Searching util timer ends... " + str(timer_to_end))
                     timer_to_end -= 1
                 elif find_token(num_color_box)[0] < (d_th * 2):
