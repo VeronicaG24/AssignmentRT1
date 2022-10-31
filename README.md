@@ -249,7 +249,7 @@ else:
 Implemented improvements
 ----------------------
 
-Some improvements have been implemented due to avoid some critical situation:
+Some improvements have been implemented due to avoid some critical situations:
 
 * To avoid the collision with the golden box before the release of the silver box, in the main function, where the distance to release the box is checked, I set the parameter equals to (d_th*2).
 
@@ -296,4 +296,11 @@ if the robot sees box in front of the target one:
 ```python
 if there is no box left to pair:
     exit the code
+```
+
+* To avoid hitting boxes along the path to reach a box, it is possible to turn a little right and then keep moving forward to reach the target box.
+
+```python
+if a box is seen and it is not the target:
+    turn right to avoid it
 ```
