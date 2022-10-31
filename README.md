@@ -87,7 +87,7 @@ Each `Marker` object has the following attributes:
 * `rot_y`: an alias for `centre.rot_y`
 * `timestamp`: the time at which the marker was seen (when `R.see` was called).
 
-For example, the following code lists all of the markers the robot can see:
+For example, the following code lists all the markers the robot can see:
 
 ```python
 markers = R.see()
