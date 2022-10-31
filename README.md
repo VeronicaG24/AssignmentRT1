@@ -120,9 +120,12 @@ Description of the code
 
 Global variables are defined at the start of the code:
 
-* ,
-* .
-* .
+* `R = Robot()`: creation of the robot
+* `list_token_silver = list()`: list of the silver token already paired
+* `list_token_gold = list()`: list of the golden token already paired
+* `color_token = [MARKER_TOKEN_SILVER, MARKER_TOKEN_GOLD]`: list of the color code of the tokens
+* `a_th = 2.0`: threshold to control the angular orientation of the robot
+* `d_th = 0.4`: threshold to control the linear distance of the robot
 
 The code is divided into separate functions:
 
