@@ -301,6 +301,6 @@ if there is no box left to pair:
 * To avoid hitting boxes along the path to reach a box, it is possible to turn a little right and then keep moving forward to reach the target box.
 
 ```python
-if a box is seen and it is not the target:
+if the robot sees a box and it is not the target one:
     turn right to avoid it
 ```
