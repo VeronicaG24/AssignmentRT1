@@ -12,28 +12,6 @@ The simulator requires a Python 2.7 installation, the [pygame](http://pygame.org
 
 Once the dependencies are installed, simply run the `test.py` script to test out the simulator.
 
-How to run
-----------------------
-
-To launch it, download the repository from GitHub:
-
-```python
-git clone command https://github.com/VeronicaG24/AssignmentRT1.git
-```
-
-Switch to the assignment22 branch:
-
-```python
-git checkout assignment22
-```
-
-Then, launch it from robot-sim folder:
-
-```python
-python2 run.py assignment.py
-```
-
-
 Robot API
 ---------
 
@@ -104,6 +82,27 @@ for m in markers:
 
 Assignment 1
 ================================
+
+How to run
+----------------------
+
+To launch it, download the repository from GitHub:
+
+```python
+git clone command https://github.com/VeronicaG24/AssignmentRT1.git
+```
+
+Switch to the assignment22 branch:
+
+```python
+git checkout assignment22
+```
+
+Then, launch it from robot-sim folder:
+
+```python
+python2 run.py assignment.py
+```
 
 Requirements
 ----------------------
