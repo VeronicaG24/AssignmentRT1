@@ -50,7 +50,7 @@ def turn(speed, seconds):
 
 
 #################################################################
-# Function to find the closest silver token
+# Function to find the closest token with specific colour
 #  
 # Args: col_num (int): number of the color
 # 			0 for silver token
@@ -104,7 +104,8 @@ def main():
 
                 if find_token(num_color_box)[0] == -1 or find_token(num_color_box)[1] == -1:
                     turn(10, 1)
-                    print("Codes of the silver box already paired: " + str(list_token_silver))
+                    #print("Codes of the silver box already paired: " + str(list_token_silver))
+                    #print("Codes of the golden box already paired: " + str(list_token_gold))
                     print("Searching util timer ends... " + str(timer_to_end))
                     timer_to_end -= 1
                 elif find_token(num_color_box)[0] < d_th:
@@ -118,7 +119,7 @@ def main():
                     turn(-1, 1)
                     timer_to_change -= 1
                 elif -a_th < find_token(num_color_box)[1] < a_th and find_token(num_color_box)[0] > d_th:
-                    drive(30, 1)
+                    drive(35, 1)
                     timer_to_change -= 1
 
                 if timer_to_change <= 0:
@@ -139,13 +140,17 @@ def main():
 
                 if find_token(num_color_box)[0] == -1 or find_token(num_color_box)[1] == -1:
                     turn(10, 1)
-                    print("Codes of the golden box already paired: " + str(list_token_gold))
+                    #print("Codes of the silver box already paired: " + str(list_token_silver))
+                    #print("Codes of the golden box already paired: " + str(list_token_gold))
                     print("Searching util timer ends... " + str(timer_to_end))
                     timer_to_end -= 1
                 elif find_token(num_color_box)[0] < (d_th * 2):
                     list_token_gold.append(find_token(num_color_box)[2])
                     success_release_silver = R.release()
-                    drive(-10, 3)
+                    print("Codes of the silver box already paired: " + str(list_token_silver))
+                    print("Codes of the golden box already paired: " + str(list_token_gold))
+                    drive(-20, 2)
+                    turn(30, 2)
                     timer_to_change = 50
                 elif find_token(num_color_box)[1] > a_th:
                     turn(1, 1)
@@ -154,7 +159,7 @@ def main():
                     turn(-1, 1)
                     timer_to_change -= 1
                 elif -a_th < find_token(num_color_box)[1] < a_th and find_token(num_color_box)[0] > d_th:
-                    drive(30, 1)
+                    drive(35, 1)
                     timer_to_change -= 1
 
                 if timer_to_change <= 0:
