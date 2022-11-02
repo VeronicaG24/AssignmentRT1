@@ -40,6 +40,10 @@ Description of the code
 Global variables are defined at the start of the code:
 
 * `R = Robot()`: creation of the robot
+* `silver_box = int(0)`: number referred to the silver colour
+* `golden_box = int(1)`: number referred to the golden colour
+* `timer_change = int(50)`: initial value of the timer to make the robot change its target of stacked
+* `timer_end = int(30)`: initial value of the timer to make the program end
 * `list_token_silver = list()`: list of the silver token already paired
 * `list_token_gold = list()`: list of the golden token already paired
 * `color_token = [MARKER_TOKEN_SILVER, MARKER_TOKEN_GOLD]`: list of the color code of the tokens
@@ -48,7 +52,7 @@ Global variables are defined at the start of the code:
 
 The code is divided into separate functions:
 
-* `main()`: manages the robot so that it will reach the goal if having silver and golden boxes paired.
+* `main()`: manages the robot so that it will reach the goal of having silver and golden boxes paired.
 
 ```python
 set initial values for number of the color, grab and release variable, timer to change and timer to end
@@ -58,32 +62,7 @@ while timer to end the research is grater or equal to 0:
     if the number of the color is equal to 0 (silver) and release is true:
         reset timer to end
 
-        while grab variable is false and the timer to end is grater or equal to 0:
-
-            if any token is found:
-                turn  and look for another box
-                decrease the timer to end
-                
-            elif the robot is enought close to the target box:
-                add the code of the box to the list of the silver boxes paired
-                grab the box and upadate grab variable
-                reset the timer to chenge box
-                
-            elif the taget box is on the right of the robot:
-                turn right
-                decrease the timer to chenge
-                
-            elif the taget box is on the left of the robot:
-                turn left
-                decrease the timer to chenge
-                
-            elif the robot is alligned and not enought closed to the target box:
-                move forward
-                decrease the timer to change
-
-            if the timer to change is less than 0:
-                change target by driving back and turn the robot
-                reset the timer to change
+        call grab_box function
 
         if grab is true:
             change number of the color into 1 (gold)
@@ -91,8 +70,62 @@ while timer to end the research is grater or equal to 0:
 
     if the number of the color is equal to 1 (gold) and grab variable is true:
         reset timer to end
+        
+        call release_box function
 
-        while release variable is false and timer to end is grater or equal to 0:
+        if release is true:
+            change number of the color into 0 (silver)
+            chenge grab variable into false
+
+exit the program when the timer to end is over
+```
+
+* `grab_box(num_colour_box, success_grab_silver, timer_to_end)`: look for a box of the specified colour, reach it and grab it. 
+Manage the timer to change target in case the robot is stacked and the timer to end the program.
+This function calls several time the functions `find_token(col_num)`, `drive(speed, seconds)` and `turn(speed, seconds)`.
+
+```python
+reset timer to chenge target
+	
+while grab variable is false and the timer to end is grater or equal to 0:
+
+        if any token is found:
+            turn  and look for another box
+            decrease the timer to end
+            
+        elif the robot is enought close to the target box:
+            add the code of the box to the list of the silver boxes paired
+            grab the box and upadate grab variable
+            reset the timer to change box
+            
+        elif the taget box is on the right of the robot:
+            turn right
+            decrease the timer to change
+            
+        elif the taget box is on the left of the robot:
+            turn left
+            decrease the timer to chenge
+            
+        elif the robot is alligned and not enought closed to the target box:
+            move forward
+            decrease the timer to change
+
+        if the timer to change is less than 0:
+            change target by driving back and turn the robot
+            reset the timer to change target
+            reset the timer to end the program
+	
+return true the robot success to grab the box, false if not; the value of the timer to end the program
+```
+
+* `release_box(num_colour_box, success_release_silver, timer_to_end)`: look for a box of the specified colour, reach it and release the box near the target one. 
+Manage the timer to change target in case the robot is stacked and the timer to end the program.
+This function calls several time the functions `find_token(col_num)`, `drive(speed, seconds)` and `turn(speed, seconds)`.
+
+```python
+reset timer to chenge target
+
+while release variable is false and timer to end is grater or equal to 0:
 
             if any token is found:
                 turn and look for another box
@@ -102,15 +135,15 @@ while timer to end the research is grater or equal to 0:
                 add the code of the box to the list of the golden boxes paired
                 release the box and upadate grab variable
                 drive back and turn right
-                reset the timer to chenge box
+                reset the timer to change box
                 
             elif the taget box is on the right of the robot:
                 turn right
-                decrease the timer to chenge
+                decrease the timer to change
                 
             elif the taget box is on the left of the robot:
                 turn left
-                decrease the timer to chenge
+                decrease the timer to change
                 
             elif the robot is alligned and not enought closed to the target box:
                 move forward
@@ -119,12 +152,9 @@ while timer to end the research is grater or equal to 0:
             if the timer to change is less than 0:
                 change target by driving back and turn the robot
                 reset the timer to change
+                reset the timer to end the program
 
-        if release is true:
-            change number of the color into 0 (silver)
-            chenge grab variable into false
-
-exit the program when the timer to end is over
+return true the robot success to release the box, false if not; the value of the timer to end the program
 ```
 
 * `drive(speed, seconds)`: commands the linear velocity of the robot, fixing the speed and how long the robot has to move.
