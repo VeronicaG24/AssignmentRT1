@@ -88,6 +88,20 @@ def find_token(col_num):
         return dist, rot_y, code
 
 
+######################################################################
+# Function to reach and grab the closest box with specific colour
+# Manage the timers to change target or to end the program
+#  
+# Args: num_color_box (int): number of the color
+# 			      0 for silver token
+# 			      1 for gold token
+#	success_grab_silver (boolean): True if a box is grabbed
+#					False if not grabbed
+#	timer_to_end (int): value of the timer to end the program
+# Returns: success_grab_silver (boolean): True if a box is grabbed
+#					   False if not grabbed
+# 	   timer_to_end (int): value of the timer to end the program
+######################################################################
 def grab_box(num_color_box, success_grab_silver, timer_to_end):
 	timer_to_change = timer_change
 	
@@ -118,7 +132,21 @@ def grab_box(num_color_box, success_grab_silver, timer_to_end):
 	
 	return success_grab_silver, timer_to_end
 	
-	
+
+######################################################################
+# Function to find and release a box close to a specific coloured box
+# Manage the timers to change target or to end the program
+#  
+# Args: num_color_box (int): number of the color
+# 			      0 for silver token
+# 			      1 for gold token
+#	success_release_silver (boolean): True if a box is released
+#					   False if not released
+#	timer_to_end (int): value of the timer to end the program
+# Returns: success_release_silver (boolean): True if a box is grabbed
+#					      False if not grabbed
+# 	   timer_to_end (int): value of the timer to end the program
+######################################################################	
 def release_box(num_color_box, success_release_silver, timer_to_end):
 	timer_to_change = timer_change
 	
