@@ -108,25 +108,25 @@ def find_token(col_num):
 #					   False if not grabbed
 # 	   timer_to_end (int): value of the timer to end the program
 ######################################################################
-def grab_box(num_color_box, success_grab_silver, timer_to_end):
+def grab_box(num_colour_box, success_grab_silver, timer_to_end):
 	timer_to_change = timer_change
 	
 	while not success_grab_silver and timer_to_end >= 0:
-		if find_token(num_color_box)[0] == -1 or find_token(num_color_box)[1] == -1:
+		if find_token(num_colour_box)[0] == -1 or find_token(num_colour_box)[1] == -1:
 			turn(10, 1)
 			print("Searching util timer ends... " + str(timer_to_end))
 			timer_to_end -= 1
-		elif find_token(num_color_box)[0] < d_th:
-			list_token_silver.append(find_token(num_color_box)[2])
+		elif find_token(num_colour_box)[0] < d_th:
+			list_token_silver.append(find_token(num_colour_box)[2])
 			success_grab_silver = R.grab()
 			timer_to_change = timer_change
-		elif find_token(num_color_box)[1] > a_th:
+		elif find_token(num_colour_box)[1] > a_th:
 			turn(1, 1)
 			timer_to_change -= 1
-		elif find_token(num_color_box)[1] < -a_th:
+		elif find_token(num_colour_box)[1] < -a_th:
 			turn(-1, 1)
 			timer_to_change -= 1
-		elif -a_th < find_token(num_color_box)[1] < a_th and find_token(num_color_box)[0] > d_th:
+		elif -a_th < find_token(num_colour_box)[1] < a_th and find_token(num_colour_box)[0] > d_th:
 			drive(35, 1)
 			timer_to_change -= 1
 
@@ -135,6 +135,7 @@ def grab_box(num_color_box, success_grab_silver, timer_to_end):
 			drive(-30, 2)
 			turn(40, 2)
 			timer_to_change = timer_change
+			timer_to_end = timer_end
 	
 	return success_grab_silver, timer_to_end
 	
@@ -153,29 +154,29 @@ def grab_box(num_color_box, success_grab_silver, timer_to_end):
 #					      False if not grabbed
 # 	   timer_to_end (int): value of the timer to end the program
 ######################################################################	
-def release_box(num_color_box, success_release_silver, timer_to_end):
+def release_box(num_colour_box, success_release_silver, timer_to_end):
 	timer_to_change = timer_change
 	
 	while not success_release_silver and timer_to_end >= 0:
-		if find_token(num_color_box)[0] == -1 or find_token(num_color_box)[1] == -1:
+		if find_token(num_colour_box)[0] == -1 or find_token(num_colour_box)[1] == -1:
 			turn(10, 1)
 		        print("Searching util timer ends... " + str(timer_to_end))
 		        timer_to_end -= 1
-		elif find_token(num_color_box)[0] < (d_th * 2):
-		        list_token_gold.append(find_token(num_color_box)[2])
+		elif find_token(num_colour_box)[0] < (d_th * 2):
+		        list_token_gold.append(find_token(num_colour_box)[2])
 		        success_release_silver = R.release()
 		        print("Codes of the silver box already paired: " + str(list_token_silver))
 		        print("Codes of the golden box already paired: " + str(list_token_gold))
 		        drive(-20, 2)
 		        turn(30, 2)
 		        timer_to_change = timer_change
-		elif find_token(num_color_box)[1] > a_th:
+		elif find_token(num_colour_box)[1] > a_th:
 		        turn(1, 1)
 		        timer_to_change -= 1
-		elif find_token(num_color_box)[1] < -a_th:
+		elif find_token(num_colour_box)[1] < -a_th:
 		         turn(-1, 1)
 		         timer_to_change -= 1
-		elif -a_th < find_token(num_color_box)[1] < a_th and find_token(num_color_box)[0] > d_th:
+		elif -a_th < find_token(num_colour_box)[1] < a_th and find_token(num_colour_box)[0] > d_th:
 		         drive(35, 1)
 		         timer_to_change -= 1
 
@@ -184,6 +185,7 @@ def release_box(num_color_box, success_release_silver, timer_to_end):
 		         drive(-30, 2)
 		         turn(40, 2)
 		         timer_to_change = timer_change
+		         timer_to_end = timer_end
         
 	return success_release_silver, timer_to_end
 
