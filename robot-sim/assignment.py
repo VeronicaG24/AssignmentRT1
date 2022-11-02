@@ -5,6 +5,12 @@ from sr.robot import *
 
 R = Robot()
 
+#int: number of the silver colour
+silver_box = int(0)
+
+#int: number of the golden colour
+golden_box = int(1)
+
 # int: Timer to make the robot change its target box
 timer_change = int(50)
     
@@ -188,15 +194,14 @@ def release_box(num_color_box, success_release_silver, timer_to_end):
 # 
 #######################################
 def main():
-    num_color_box = 0
+    num_color_box = silver_box
     success_release = True
     success_grab = False
     timer_to_end = timer_end
-    timer_to_change = timer_change
 
     while timer_to_end >= 0:
 
-        if num_color_box == 0 and success_release:
+        if num_color_box == silver_box and success_release:
 		print("Looking for a silver box not already taken...")
 		
 		timer_to_end = timer_end
@@ -206,7 +211,7 @@ def main():
 			num_color_box = 1
 			success_release = False
 
-        if num_color_box == 1 and success_grab:
+        if num_color_box == golden_box and success_grab:
 		print("Looking for a golden box not already paired...")
 		
 		timer_to_end = timer_end
