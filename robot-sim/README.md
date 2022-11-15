@@ -90,7 +90,7 @@ reset timer to chenge target
 while grab variable is false and the timer to end is grater or equal to 0:
 
         if any token is found:
-            turn  and look for another box
+            turn and look for another box
             decrease the timer to end
             
         elif the robot is enought close to the target box:
